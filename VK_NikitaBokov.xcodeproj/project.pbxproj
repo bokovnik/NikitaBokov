@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C20B2991F993C2F0051585D /* UserStoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C20B2981F993C2F0051585D /* UserStoryTableViewController.swift */; };
 		9CF4CF941F952475002E5EE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF4CF931F952475002E5EE8 /* AppDelegate.swift */; };
 		9CF4CF991F952475002E5EE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF4CF971F952475002E5EE8 /* Main.storyboard */; };
 		9CF4CF9B1F952475002E5EE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CF4CF9A1F952475002E5EE8 /* Assets.xcassets */; };
@@ -32,14 +33,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9CF4CF901F952475002E5EE8 /* VK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C20B2981F993C2F0051585D /* UserStoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStoryTableViewController.swift; sourceTree = "<group>"; };
+		9CF4CF901F952475002E5EE8 /* VK_NikitaBokov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK_NikitaBokov.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF4CF931F952475002E5EE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CF4CF981F952475002E5EE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9CF4CF9A1F952475002E5EE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CF4CF9D1F952475002E5EE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9CF4CF9F1F952475002E5EE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9CF4CFA41F952475002E5EE8 /* VKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9CF4CFAF1F952475002E5EE8 /* VKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VKUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CF4CFA41F952475002E5EE8 /* VK_NikitaBokovTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VK_NikitaBokovTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CF4CFAF1F952475002E5EE8 /* VK_NikitaBokovUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VK_NikitaBokovUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF4CFC31F95288F002E5EE8 /* LoginFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,9 +81,9 @@
 		9CF4CF911F952475002E5EE8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9CF4CF901F952475002E5EE8 /* VK.app */,
-				9CF4CFA41F952475002E5EE8 /* VKTests.xctest */,
-				9CF4CFAF1F952475002E5EE8 /* VKUITests.xctest */,
+				9CF4CF901F952475002E5EE8 /* VK_NikitaBokov.app */,
+				9CF4CFA41F952475002E5EE8 /* VK_NikitaBokovTests.xctest */,
+				9CF4CFAF1F952475002E5EE8 /* VK_NikitaBokovUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +97,7 @@
 				9CF4CF9C1F952475002E5EE8 /* LaunchScreen.storyboard */,
 				9CF4CF9F1F952475002E5EE8 /* Info.plist */,
 				9CF4CFC31F95288F002E5EE8 /* LoginFormController.swift */,
+				9C20B2981F993C2F0051585D /* UserStoryTableViewController.swift */,
 			);
 			path = VK;
 			sourceTree = "<group>";
@@ -102,9 +105,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9CF4CF8F1F952475002E5EE8 /* VK */ = {
+		9CF4CF8F1F952475002E5EE8 /* VK_NikitaBokov */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9CF4CFB81F952475002E5EE8 /* Build configuration list for PBXNativeTarget "VK" */;
+			buildConfigurationList = 9CF4CFB81F952475002E5EE8 /* Build configuration list for PBXNativeTarget "VK_NikitaBokov" */;
 			buildPhases = (
 				9CF4CF8C1F952475002E5EE8 /* Sources */,
 				9CF4CF8D1F952475002E5EE8 /* Frameworks */,
@@ -114,14 +117,14 @@
 			);
 			dependencies = (
 			);
-			name = VK;
+			name = VK_NikitaBokov;
 			productName = VK;
-			productReference = 9CF4CF901F952475002E5EE8 /* VK.app */;
+			productReference = 9CF4CF901F952475002E5EE8 /* VK_NikitaBokov.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9CF4CFA31F952475002E5EE8 /* VKTests */ = {
+		9CF4CFA31F952475002E5EE8 /* VK_NikitaBokovTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9CF4CFBB1F952475002E5EE8 /* Build configuration list for PBXNativeTarget "VKTests" */;
+			buildConfigurationList = 9CF4CFBB1F952475002E5EE8 /* Build configuration list for PBXNativeTarget "VK_NikitaBokovTests" */;
 			buildPhases = (
 				9CF4CFA01F952475002E5EE8 /* Sources */,
 				9CF4CFA11F952475002E5EE8 /* Frameworks */,
@@ -132,14 +135,14 @@
 			dependencies = (
 				9CF4CFA61F952475002E5EE8 /* PBXTargetDependency */,
 			);
-			name = VKTests;
+			name = VK_NikitaBokovTests;
 			productName = VKTests;
-			productReference = 9CF4CFA41F952475002E5EE8 /* VKTests.xctest */;
+			productReference = 9CF4CFA41F952475002E5EE8 /* VK_NikitaBokovTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		9CF4CFAE1F952475002E5EE8 /* VKUITests */ = {
+		9CF4CFAE1F952475002E5EE8 /* VK_NikitaBokovUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9CF4CFBE1F952475002E5EE8 /* Build configuration list for PBXNativeTarget "VKUITests" */;
+			buildConfigurationList = 9CF4CFBE1F952475002E5EE8 /* Build configuration list for PBXNativeTarget "VK_NikitaBokovUITests" */;
 			buildPhases = (
 				9CF4CFAB1F952475002E5EE8 /* Sources */,
 				9CF4CFAC1F952475002E5EE8 /* Frameworks */,
@@ -150,9 +153,9 @@
 			dependencies = (
 				9CF4CFB11F952475002E5EE8 /* PBXTargetDependency */,
 			);
-			name = VKUITests;
+			name = VK_NikitaBokovUITests;
 			productName = VKUITests;
-			productReference = 9CF4CFAF1F952475002E5EE8 /* VKUITests.xctest */;
+			productReference = 9CF4CFAF1F952475002E5EE8 /* VK_NikitaBokovUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -181,7 +184,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9CF4CF8B1F952475002E5EE8 /* Build configuration list for PBXProject "VK" */;
+			buildConfigurationList = 9CF4CF8B1F952475002E5EE8 /* Build configuration list for PBXProject "VK_NikitaBokov" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -194,9 +197,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9CF4CF8F1F952475002E5EE8 /* VK */,
-				9CF4CFA31F952475002E5EE8 /* VKTests */,
-				9CF4CFAE1F952475002E5EE8 /* VKUITests */,
+				9CF4CF8F1F952475002E5EE8 /* VK_NikitaBokov */,
+				9CF4CFA31F952475002E5EE8 /* VK_NikitaBokovTests */,
+				9CF4CFAE1F952475002E5EE8 /* VK_NikitaBokovUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -234,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CF4CF941F952475002E5EE8 /* AppDelegate.swift in Sources */,
+				9C20B2991F993C2F0051585D /* UserStoryTableViewController.swift in Sources */,
 				9CF4CFC41F95288F002E5EE8 /* LoginFormController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,12 +261,12 @@
 /* Begin PBXTargetDependency section */
 		9CF4CFA61F952475002E5EE8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9CF4CF8F1F952475002E5EE8 /* VK */;
+			target = 9CF4CF8F1F952475002E5EE8 /* VK_NikitaBokov */;
 			targetProxy = 9CF4CFA51F952475002E5EE8 /* PBXContainerItemProxy */;
 		};
 		9CF4CFB11F952475002E5EE8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9CF4CF8F1F952475002E5EE8 /* VK */;
+			target = 9CF4CF8F1F952475002E5EE8 /* VK_NikitaBokov */;
 			targetProxy = 9CF4CFB01F952475002E5EE8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -434,7 +438,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VK.app/VK";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VK_NikitaBokov.app/VK_NikitaBokov";
 			};
 			name = Debug;
 		};
@@ -450,7 +454,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VK.app/VK";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VK_NikitaBokov.app/VK_NikitaBokov";
 			};
 			name = Release;
 		};
@@ -487,7 +491,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9CF4CF8B1F952475002E5EE8 /* Build configuration list for PBXProject "VK" */ = {
+		9CF4CF8B1F952475002E5EE8 /* Build configuration list for PBXProject "VK_NikitaBokov" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CF4CFB61F952475002E5EE8 /* Debug */,
@@ -496,7 +500,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9CF4CFB81F952475002E5EE8 /* Build configuration list for PBXNativeTarget "VK" */ = {
+		9CF4CFB81F952475002E5EE8 /* Build configuration list for PBXNativeTarget "VK_NikitaBokov" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CF4CFB91F952475002E5EE8 /* Debug */,
@@ -505,7 +509,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9CF4CFBB1F952475002E5EE8 /* Build configuration list for PBXNativeTarget "VKTests" */ = {
+		9CF4CFBB1F952475002E5EE8 /* Build configuration list for PBXNativeTarget "VK_NikitaBokovTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CF4CFBC1F952475002E5EE8 /* Debug */,
@@ -514,7 +518,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9CF4CFBE1F952475002E5EE8 /* Build configuration list for PBXNativeTarget "VKUITests" */ = {
+		9CF4CFBE1F952475002E5EE8 /* Build configuration list for PBXNativeTarget "VK_NikitaBokovUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CF4CFBF1F952475002E5EE8 /* Debug */,
