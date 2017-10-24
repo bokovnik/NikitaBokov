@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C0802CE1F9EE2AE005B6431 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CF4CF9A1F952475002E5EE8 /* Assets.xcassets */; };
+		9C0802CF1F9EE2AE005B6431 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CF4CF9A1F952475002E5EE8 /* Assets.xcassets */; };
+		9C0802D11F9EF289005B6431 /* FriendPhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0802D01F9EF289005B6431 /* FriendPhotoCollectionViewController.swift */; };
+		9C0802D31F9F14B9005B6431 /* MyGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0802D21F9F14B9005B6431 /* MyGroupsTableViewController.swift */; };
+		9C0802D51F9F19E5005B6431 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0802D41F9F19E5005B6431 /* GroupsTableViewController.swift */; };
 		9C20B2991F993C2F0051585D /* UserStoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C20B2981F993C2F0051585D /* UserStoryTableViewController.swift */; };
 		9CF4CF941F952475002E5EE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF4CF931F952475002E5EE8 /* AppDelegate.swift */; };
 		9CF4CF991F952475002E5EE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF4CF971F952475002E5EE8 /* Main.storyboard */; };
@@ -33,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9C0802D01F9EF289005B6431 /* FriendPhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendPhotoCollectionViewController.swift; sourceTree = "<group>"; };
+		9C0802D21F9F14B9005B6431 /* MyGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGroupsTableViewController.swift; sourceTree = "<group>"; };
+		9C0802D41F9F19E5005B6431 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		9C20B2981F993C2F0051585D /* UserStoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStoryTableViewController.swift; sourceTree = "<group>"; };
 		9CF4CF901F952475002E5EE8 /* VK_NikitaBokov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK_NikitaBokov.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF4CF931F952475002E5EE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,11 +101,14 @@
 			children = (
 				9CF4CF931F952475002E5EE8 /* AppDelegate.swift */,
 				9CF4CF971F952475002E5EE8 /* Main.storyboard */,
+				9C0802D01F9EF289005B6431 /* FriendPhotoCollectionViewController.swift */,
 				9CF4CF9A1F952475002E5EE8 /* Assets.xcassets */,
 				9CF4CF9C1F952475002E5EE8 /* LaunchScreen.storyboard */,
 				9CF4CF9F1F952475002E5EE8 /* Info.plist */,
 				9CF4CFC31F95288F002E5EE8 /* LoginFormController.swift */,
 				9C20B2981F993C2F0051585D /* UserStoryTableViewController.swift */,
+				9C0802D21F9F14B9005B6431 /* MyGroupsTableViewController.swift */,
+				9C0802D41F9F19E5005B6431 /* GroupsTableViewController.swift */,
 			);
 			path = VK;
 			sourceTree = "<group>";
@@ -219,6 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C0802CE1F9EE2AE005B6431 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C0802CF1F9EE2AE005B6431 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,8 +250,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CF4CF941F952475002E5EE8 /* AppDelegate.swift in Sources */,
+				9C0802D11F9EF289005B6431 /* FriendPhotoCollectionViewController.swift in Sources */,
+				9C0802D31F9F14B9005B6431 /* MyGroupsTableViewController.swift in Sources */,
 				9C20B2991F993C2F0051585D /* UserStoryTableViewController.swift in Sources */,
 				9CF4CFC41F95288F002E5EE8 /* LoginFormController.swift in Sources */,
+				9C0802D51F9F19E5005B6431 /* GroupsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,7 +421,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = VK/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = home.VK;
+				PRODUCT_BUNDLE_IDENTIFIER = "home.VK-NikitaBokov";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -419,7 +435,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = VK/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = home.VK;
+				PRODUCT_BUNDLE_IDENTIFIER = "home.VK-NikitaBokov";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

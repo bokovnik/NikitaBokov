@@ -1,16 +1,17 @@
 //
-//  UserStoryTableViewController.swift
+//  GroupsTableViewController.swift
 //  VK_NikitaBokov
 //
-//  Created by Боков Никита on 19.10.2017.
+//  Created by Боков Никита on 24.10.2017.
 //  Copyright © 2017 Боков Никита. All rights reserved.
 //
 
 import UIKit
 
-class UserStoryTableViewController: UITableViewController {
+class GroupsTableViewController: UITableViewController {
 
-    var friendList: [(String, UIImage?)] = [("Кэтрин Джейнвэй", UIImage(named: "Janeway")),("Чакотай",UIImage(named: "Chakotay")),("Тувок",UIImage(named: "Tuvok"))]
+    var groupList: [(String, UIImage?, Int)] = [("Луна", UIImage(named: "Moon"), 10),("Марс",UIImage(named: "Mars"), 150000),("Венера",UIImage(named: "Venus"), 1000000)]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,14 +36,15 @@ class UserStoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return friendList.count
+        return groupList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        cell.textLabel?.text = friendList[indexPath.row].0
-        cell.imageView?.image = friendList[indexPath.row].1
+        let cell = tableView.dequeueReusableCell(withIdentifier: "groups", for: indexPath)
+        cell.textLabel?.text = groupList[indexPath.row].0
+        cell.imageView?.image = groupList[indexPath.row].1
+        cell.detailTextLabel?.text = "Участников: \(groupList[indexPath.row].2)"
         // Configure the cell...
 
         return cell
