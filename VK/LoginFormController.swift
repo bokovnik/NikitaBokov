@@ -7,11 +7,71 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class LoginFormController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //информация о пользователе
+//        let userid = 210700286
+        let url = "https://api.vk.com/method/users.get?user_id=210700286&v=5.52"
+        Alamofire.request(url, method: .get).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print("Информация о пользователе: \(json)")
+            case .failure(let error):
+                print(error)
+            }
+        }
+   //список друзей пользователя
+        let url2 = "https://api.vk.com/method/friends.get?user_id=1868775&v=5.52&access_token=fd9333a7fc8a13272f35e2ba694cdb382f19cadb1f81902b0dab36c8f3d106afdd17ec91e98b8c924cd0f"
+        Alamofire.request(url2, method: .get).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print("Друзья пользователя: \(json)")
+            case .failure(let error):
+                print(error)
+            }
+        }
+    //фотографии пользователя
+        let url3 = "https://api.vk.com/method/photos.get?album_id=profile&user_id=1868775&v=5.52&access_token=fd9333a7fc8a13272f35e2ba694cdb382f19cadb1f81902b0dab36c8f3d106afdd17ec91e98b8c924cd0f"
+        Alamofire.request(url3, method: .get).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print("Фотографии пользователя: \(json)")
+            case .failure(let error):
+                print(error)
+            }
+        }
+        //группы текущего пользователя
+        let url4 = "https://api.vk.com/method/groups.get?v=5.52&access_token=fd9333a7fc8a13272f35e2ba694cdb382f19cadb1f81902b0dab36c8f3d106afdd17ec91e98b8c924cd0f"
+        Alamofire.request(url4, method: .get).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print("Группы текущего пользователя: \(json)")
+            case .failure(let error):
+                print(error)
+            }
+        }
+        //Получение групп по поисковому запросу
+        let url5 = "https://api.vk.com/method/groups.search?q=Nigthwish&v=5.52&access_token=fd9333a7fc8a13272f35e2ba694cdb382f19cadb1f81902b0dab36c8f3d106afdd17ec91e98b8c924cd0f"
+        Alamofire.request(url5, method: .get).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print("Группы, найденные по запросу 'Nigthwish': \(json)")
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
         LoginField.text = "admin"
         PasswordField.text = "123456"
         // Do any additional setup after loading the view.
