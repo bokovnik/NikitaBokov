@@ -1,0 +1,6 @@
+framework module Pods_VK_NikitaBokovUITests {
+  umbrella header "Pods-VK_NikitaBokovUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
