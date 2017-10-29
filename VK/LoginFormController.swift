@@ -15,6 +15,7 @@ class LoginFormController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let access_token = "a012cb00a6a8b634a4b02518d22c46fde40f4af34038d2bbdb9787bdbca0f7857ad7b02a4b9a4806525a1"// истечет в 22:00 31.10.2017
         //информация о пользователе
 //        let userid = 210700286
         let url = "https://api.vk.com/method/users.get?user_id=210700286&v=5.52"
@@ -28,7 +29,7 @@ class LoginFormController: UIViewController {
             }
         }
    //список друзей пользователя
-        let url2 = "https://api.vk.com/method/friends.get?user_id=1868775&v=5.52&access_token=fd9333a7fc8a13272f35e2ba694cdb382f19cadb1f81902b0dab36c8f3d106afdd17ec91e98b8c924cd0f"
+        let url2 = "https://api.vk.com/method/friends.get?user_id=1868775&v=5.52&access_token=\(access_token)"
         Alamofire.request(url2, method: .get).responseJSON { response in
             switch response.result {
             case .success(let value):
@@ -39,7 +40,7 @@ class LoginFormController: UIViewController {
             }
         }
     //фотографии пользователя
-        let url3 = "https://api.vk.com/method/photos.get?album_id=profile&user_id=1868775&v=5.52&access_token=fd9333a7fc8a13272f35e2ba694cdb382f19cadb1f81902b0dab36c8f3d106afdd17ec91e98b8c924cd0f"
+        let url3 = "https://api.vk.com/method/photos.get?album_id=profile&user_id=1868775&v=5.52&access_token=\(access_token)"
         Alamofire.request(url3, method: .get).responseJSON { response in
             switch response.result {
             case .success(let value):
@@ -50,7 +51,7 @@ class LoginFormController: UIViewController {
             }
         }
         //группы текущего пользователя
-        let url4 = "https://api.vk.com/method/groups.get?v=5.52&access_token=fd9333a7fc8a13272f35e2ba694cdb382f19cadb1f81902b0dab36c8f3d106afdd17ec91e98b8c924cd0f"
+        let url4 = "https://api.vk.com/method/groups.get?v=5.52&access_token=\(access_token)"
         Alamofire.request(url4, method: .get).responseJSON { response in
             switch response.result {
             case .success(let value):
@@ -61,7 +62,7 @@ class LoginFormController: UIViewController {
             }
         }
         //Получение групп по поисковому запросу
-        let url5 = "https://api.vk.com/method/groups.search?q=Nigthwish&v=5.52&access_token=fd9333a7fc8a13272f35e2ba694cdb382f19cadb1f81902b0dab36c8f3d106afdd17ec91e98b8c924cd0f"
+        let url5 = "https://api.vk.com/method/groups.search?q=Nigthwish&v=5.52&access_token=\(access_token)"
         Alamofire.request(url5, method: .get).responseJSON { response in
             switch response.result {
             case .success(let value):
