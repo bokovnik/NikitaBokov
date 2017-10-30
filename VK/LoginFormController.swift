@@ -9,14 +9,15 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import WebKit
 
 class LoginFormController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let access_token = "a012cb00a6a8b634a4b02518d22c46fde40f4af34038d2bbdb9787bdbca0f7857ad7b02a4b9a4806525a1"// истечет в 22:00 31.10.2017
-        //информация о пользователе
+        let access_token = "af7da2fab723dad963f22fdd7542951fb77bee5a44b4d0b95d835d7f4f1ba5f622361aff1aa413f46b40e"// истечет в 22:00 31.10.2017
+        //информация о пользователе - для урока 4
 //        let userid = 210700286
         let url = "https://api.vk.com/method/users.get?user_id=210700286&v=5.52"
         Alamofire.request(url, method: .get).responseJSON { response in
