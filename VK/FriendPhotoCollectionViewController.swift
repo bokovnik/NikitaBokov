@@ -10,6 +10,8 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
+var userPhoto = [Photo]()
+
 class FriendPhotoCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {

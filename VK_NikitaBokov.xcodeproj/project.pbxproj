@@ -16,6 +16,10 @@
 		9C0802D31F9F14B9005B6431 /* MyGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0802D21F9F14B9005B6431 /* MyGroupsTableViewController.swift */; };
 		9C0802D51F9F19E5005B6431 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0802D41F9F19E5005B6431 /* GroupsTableViewController.swift */; };
 		9C20B2991F993C2F0051585D /* UserStoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C20B2981F993C2F0051585D /* UserStoryTableViewController.swift */; };
+		9CE139971FA7A94B001F39BD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE139961FA7A94B001F39BD /* User.swift */; };
+		9CE139991FA7A99C001F39BD /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE139981FA7A99C001F39BD /* Photo.swift */; };
+		9CE1399B1FA7A9D2001F39BD /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1399A1FA7A9D2001F39BD /* Group.swift */; };
+		9CE1399D1FA7B2C3001F39BD /* ManagerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1399C1FA7B2C3001F39BD /* ManagerData.swift */; };
 		9CF4CF941F952475002E5EE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF4CF931F952475002E5EE8 /* AppDelegate.swift */; };
 		9CF4CF991F952475002E5EE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF4CF971F952475002E5EE8 /* Main.storyboard */; };
 		9CF4CF9B1F952475002E5EE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CF4CF9A1F952475002E5EE8 /* Assets.xcassets */; };
@@ -51,6 +55,10 @@
 		9C0802D41F9F19E5005B6431 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		9C20B2981F993C2F0051585D /* UserStoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStoryTableViewController.swift; sourceTree = "<group>"; };
 		9C8C432885F4FAB6893338E2 /* Pods_VK_NikitaBokovTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VK_NikitaBokovTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CE139961FA7A94B001F39BD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9CE139981FA7A99C001F39BD /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		9CE1399A1FA7A9D2001F39BD /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		9CE1399C1FA7B2C3001F39BD /* ManagerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerData.swift; sourceTree = "<group>"; };
 		9CF4CF901F952475002E5EE8 /* VK_NikitaBokov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK_NikitaBokov.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF4CF931F952475002E5EE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CF4CF981F952475002E5EE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -136,6 +144,10 @@
 				9C20B2981F993C2F0051585D /* UserStoryTableViewController.swift */,
 				9C0802D21F9F14B9005B6431 /* MyGroupsTableViewController.swift */,
 				9C0802D41F9F19E5005B6431 /* GroupsTableViewController.swift */,
+				9CE139961FA7A94B001F39BD /* User.swift */,
+				9CE139981FA7A99C001F39BD /* Photo.swift */,
+				9CE1399A1FA7A9D2001F39BD /* Group.swift */,
+				9CE1399C1FA7B2C3001F39BD /* ManagerData.swift */,
 			);
 			path = VK;
 			sourceTree = "<group>";
@@ -454,12 +466,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CE1399B1FA7A9D2001F39BD /* Group.swift in Sources */,
+				9CE139991FA7A99C001F39BD /* Photo.swift in Sources */,
 				9CF4CF941F952475002E5EE8 /* AppDelegate.swift in Sources */,
 				9C0802D11F9EF289005B6431 /* FriendPhotoCollectionViewController.swift in Sources */,
 				9C0802D31F9F14B9005B6431 /* MyGroupsTableViewController.swift in Sources */,
+				9CE1399D1FA7B2C3001F39BD /* ManagerData.swift in Sources */,
 				9C20B2991F993C2F0051585D /* UserStoryTableViewController.swift in Sources */,
 				9CF4CFC41F95288F002E5EE8 /* LoginFormController.swift in Sources */,
 				9C0802D51F9F19E5005B6431 /* GroupsTableViewController.swift in Sources */,
+				9CE139971FA7A94B001F39BD /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

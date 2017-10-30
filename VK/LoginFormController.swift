@@ -11,12 +11,18 @@ import Alamofire
 import SwiftyJSON
 import WebKit
 
+let access_token = "af7da2fab723dad963f22fdd7542951fb77bee5a44b4d0b95d835d7f4f1ba5f622361aff1aa413f46b40e"// истечет в 22:00 31.10.2017
+
 class LoginFormController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let access_token = "af7da2fab723dad963f22fdd7542951fb77bee5a44b4d0b95d835d7f4f1ba5f622361aff1aa413f46b40e"// истечет в 22:00 31.10.2017
+        let manager = ManagerData()
+        manager.loadFriendList()
+        manager.loadGroupList()
+        manager.loadPhoto()
+        
         //информация о пользователе - для урока 4
 //        let userid = 210700286
         let url = "https://api.vk.com/method/users.get?user_id=210700286&v=5.52"
@@ -30,7 +36,7 @@ class LoginFormController: UIViewController {
             }
         }
    //список друзей пользователя
-        let url2 = "https://api.vk.com/method/friends.get?user_id=1868775&v=5.52&access_token=\(access_token)"
+        let url2 = "https://api.vk.com/method/friends.get?user_id=1868775&fields=nickname&v=5.52&access_token=\(access_token)"
         Alamofire.request(url2, method: .get).responseJSON { response in
             switch response.result {
             case .success(let value):

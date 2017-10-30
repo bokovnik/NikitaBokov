@@ -8,12 +8,18 @@
 
 import UIKit
 
+var userList = [User]()
+
 class UserStoryTableViewController: UITableViewController {
 
-    var friendList: [(String, UIImage?)] = [("Кэтрин Джейнвэй", UIImage(named: "Janeway")),("Чакотай",UIImage(named: "Chakotay")),("Тувок",UIImage(named: "Tuvok"))]
+    
+//    var friendList: [(String, UIImage?)] = [("Кэтрин Джейнвэй", UIImage(named: "Janeway")),("Чакотай",UIImage(named: "Chakotay")),("Тувок",UIImage(named: "Tuvok"))]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //userList = []
+        //let manager = ManagerData()
+        //manager.loadFriendList()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -35,14 +41,14 @@ class UserStoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return friendList.count
+        return userList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        cell.textLabel?.text = friendList[indexPath.row].0
-        cell.imageView?.image = friendList[indexPath.row].1
+        cell.textLabel?.text = userList[indexPath.row].firstName + " " + userList[indexPath.row].lastName
+        cell.imageView?.image = UIImage(named: "Janeway")
         // Configure the cell...
 
         return cell

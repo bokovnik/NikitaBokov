@@ -8,6 +8,8 @@
 
 import UIKit
 
+var groupList = [Group]()
+
 class MyGroupsTableViewController: UITableViewController {
 
     var MyGroupList: [(String, UIImage?)] = [("Планета Земля", UIImage(named: "Earth")),("Солнечная система",UIImage(named: "SolarSystem")),("Млечный путь",UIImage(named: "MilkyWay"))]
@@ -35,14 +37,14 @@ class MyGroupsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return MyGroupList.count
+        return groupList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myGroups", for: indexPath)
-        cell.textLabel?.text = MyGroupList[indexPath.row].0
-        cell.imageView?.image = MyGroupList[indexPath.row].1
+        cell.textLabel?.text = groupList[indexPath.row].name
+        cell.imageView?.image = UIImage(named: "Earth")
         // Configure the cell...
 
         return cell
