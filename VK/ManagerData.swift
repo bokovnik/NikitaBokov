@@ -13,13 +13,13 @@ import RealmSwift
 
 class ManagerData {
     func loadFriendList(){
-        let urlFriends = "https://api.vk.com/method/friends.get?user_id=1868775&fields=nickname&v=5.52&access_token=\(access_token)"
-                
+        let urlFriends = "https://api.vk.com/method/friends.get?&fields=nickname&v=5.52&access_token=\(access_token)"
+    
         Alamofire.request(urlFriends, method: .get).responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                
+        
                 for (_, subJSON) in json["response"]["items"] {
                     let user = User()
                     user.id = subJSON["id"].intValue
@@ -27,8 +27,10 @@ class ManagerData {
                     user.lastName = subJSON["last_name"].stringValue
                     user.photo_50 = subJSON["photo_50"].stringValue
                     userList.append(user)
-//                print(user.firstName + " " + user.lastName)
+                    //print(user.firstName + " " + user.lastName)
+                    //print(userList[0].firstName + " " + userList[0].lastName)
                 }
+                //print(userList.count)
             case .failure(let error):
                 print(error)
             }

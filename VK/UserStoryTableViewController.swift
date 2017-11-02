@@ -7,19 +7,22 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 var userList = [User]()
 
 class UserStoryTableViewController: UITableViewController {
 
-    
 //    var friendList: [(String, UIImage?)] = [("Кэтрин Джейнвэй", UIImage(named: "Janeway")),("Чакотай",UIImage(named: "Chakotay")),("Тувок",UIImage(named: "Tuvok"))]
     override func viewDidLoad() {
+        //print ("viewDidLoad")
+
+        //loadFriendList()
+        //print ("viewDidLoad - end")
         super.viewDidLoad()
         
-        //userList = []
-        //let manager = ManagerData()
-        //manager.loadFriendList()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -36,14 +39,18 @@ class UserStoryTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        //print("Количество секций: 1")
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+
+        //print("Количество строк:\(userList.count)")
         return userList.count
     }
 
+   let cellImage = UIImageView()
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -101,3 +108,4 @@ class UserStoryTableViewController: UITableViewController {
     */
 
 }
+

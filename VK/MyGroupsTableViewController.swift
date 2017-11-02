@@ -14,7 +14,11 @@ class MyGroupsTableViewController: UITableViewController {
 
     var MyGroupList: [(String, UIImage?)] = [("Планета Земля", UIImage(named: "Earth")),("Солнечная система",UIImage(named: "SolarSystem")),("Млечный путь",UIImage(named: "MilkyWay"))]
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        let manager = ManagerData()
+        manager.loadGroupList()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

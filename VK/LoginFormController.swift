@@ -11,64 +11,40 @@ import Alamofire
 import SwiftyJSON
 import WebKit
 
-let access_token = "af7da2fab723dad963f22fdd7542951fb77bee5a44b4d0b95d835d7f4f1ba5f622361aff1aa413f46b40e"// истечет в 22:00 31.10.2017
+var access_token: String = ""
+//объявляем дефолтный объект для доступа к хранилищу NSUserDefaults
+let userDefaults = UserDefaults.standard
 
 class LoginFormController: UIViewController {
 
+    @IBOutlet weak var webview: WKWebView! {
+        didSet{
+            webview.navigationDelegate = self
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let manager = ManagerData()
-        manager.loadFriendList()
-        manager.loadGroupList()
-        manager.loadPhoto()
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "oauth.vk.com"
+        urlComponents.path = "/authorize"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "client_id", value: "6235615"),
+            URLQueryItem(name: "display", value: "mobile"),
+            URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
+            URLQueryItem(name: "scope", value: "262150"),
+            URLQueryItem(name: "response_type", value: "token"),
+            URLQueryItem(name: "v", value: "5.68")
+        ]
         
-        //информация о пользователе - для урока 4
-//        let userid = 210700286
-        let url = "https://api.vk.com/method/users.get?user_id=210700286&v=5.52"
-        Alamofire.request(url, method: .get).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                print("Информация о пользователе: \(json)")
-            case .failure(let error):
-                print(error)
-            }
-        }
-   //список друзей пользователя
-        let url2 = "https://api.vk.com/method/friends.get?user_id=1868775&fields=nickname&v=5.52&access_token=\(access_token)"
-        Alamofire.request(url2, method: .get).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                print("Друзья пользователя: \(json)")
-            case .failure(let error):
-                print(error)
-            }
-        }
-    //фотографии пользователя
-        let url3 = "https://api.vk.com/method/photos.get?album_id=profile&user_id=1868775&v=5.52&access_token=\(access_token)"
-        Alamofire.request(url3, method: .get).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                print("Фотографии пользователя: \(json)")
-            case .failure(let error):
-                print(error)
-            }
-        }
-        //группы текущего пользователя
-        let url4 = "https://api.vk.com/method/groups.get?v=5.52&access_token=\(access_token)"
-        Alamofire.request(url4, method: .get).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                print("Группы текущего пользователя: \(json)")
-            case .failure(let error):
-                print(error)
-            }
-        }
-        //Получение групп по поисковому запросу
+        let request = URLRequest(url: urlComponents.url!)
+        
+        webview.load(request)
+
+        
+
+        /*    //Получение групп по поисковому запросу
         let url5 = "https://api.vk.com/method/groups.search?q=Nigthwish&v=5.52&access_token=\(access_token)"
         Alamofire.request(url5, method: .get).responseJSON { response in
             switch response.result {
@@ -78,10 +54,8 @@ class LoginFormController: UIViewController {
             case .failure(let error):
                 print(error)
             }
-        }
+        }*/
         
-        LoginField.text = "admin"
-        PasswordField.text = "123456"
         // Do any additional setup after loading the view.
     }
 
@@ -90,21 +64,15 @@ class LoginFormController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBOutlet weak var LoginField: UITextField!
-    
-    @IBOutlet weak var PasswordField: UITextField!
-    
-    @IBAction func Enter(_ sender: UIButton) {
-        if LoginField.text == "admin" &&
-            PasswordField.text == "123456" {
-        performSegue(withIdentifier: "go1", sender: nil)
+
+       /* performSegue(withIdentifier: "go1", sender: nil)
         } else {
             let alert = UIAlertController(title: "Ошибка", message: "Введены неверные данные", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
         }
-    }
+    }*/
     
     
     /*
@@ -117,4 +85,44 @@ class LoginFormController: UIViewController {
     }
     */
 
+}
+extension LoginFormController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        
+        guard let url = navigationResponse.response.url, url.path == "/blank.html", let fragment = url.fragment  else {
+            decisionHandler(.allow)
+            return
+        }
+        
+        let params = fragment
+            .components(separatedBy: "&")
+            .map { $0.components(separatedBy: "=") }
+            .reduce([String: String]()) { result, param in
+                var dict = result
+                let key = param[0]
+                let value = param[1]
+                dict[key] = value
+                return dict
+        }
+        
+        access_token = params["access_token"] ?? ""
+        
+        print("Access token:\(access_token)")
+        
+        let manager = ManagerData()
+        manager.loadFriendList()
+        manager.loadGroupList()
+        manager.loadPhoto()
+        
+        //сохраняем в NSUserDefaults информацию о том, что пользователь авторизован
+        userDefaults.set(true, forKey: "userIsAutorized")
+        
+        //проверка
+        print("userIsAutorized:\(userDefaults.bool(forKey: "userIsAutorized"))")
+        
+        decisionHandler(.cancel)
+        sleep(1)
+        performSegue(withIdentifier: "go1", sender: nil)
+
+    }
 }

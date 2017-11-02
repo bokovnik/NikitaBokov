@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Group {
-    var id: Int = 0
-    var name: String = ""
-    var photo_50: String = ""
+class Group: Object {
+    @objc dynamic var id: Int = 0
+    @objc dynamic var name: String = ""
+    @objc dynamic var photo_50: String = ""
 }

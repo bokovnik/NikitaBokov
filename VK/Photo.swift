@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Photo {
-    var id: Int = 0
-    var photoURL: String = ""
+class Photo: Object {
+    @objc dynamic var id: Int = 0
+    @objc dynamic var photoURL: String = ""
 }
