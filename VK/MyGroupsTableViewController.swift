@@ -17,8 +17,10 @@ class MyGroupsTableViewController: UITableViewController {
         
         super.viewDidLoad()
         
-        let manager = ManagerData()
-        manager.loadGroupList()
+        tableView.reloadData()
+
+        //let manager = ManagerData()
+        //manager.loadGroupList()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

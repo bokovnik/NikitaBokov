@@ -22,6 +22,7 @@ class UserStoryTableViewController: UITableViewController {
         //print ("viewDidLoad - end")
         super.viewDidLoad()
         
+        tableView.reloadData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

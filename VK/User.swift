@@ -14,4 +14,9 @@ class User: Object {
     @objc dynamic var firstName: String = ""
     @objc dynamic var lastName: String = ""
     @objc dynamic var photo_50: String = ""
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
 }

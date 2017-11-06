@@ -31,8 +31,12 @@ class ManagerData {
                     //print(userList[0].firstName + " " + userList[0].lastName)
                 }
                 //print(userList.count)
+                self.saveUser(userList)
+                print(userList)
+                loadData = true
             case .failure(let error):
                 print(error)
+                loadData = false
             }
         }
     }
@@ -52,8 +56,12 @@ class ManagerData {
                     groupList.append(group)
                     //                print(user.firstName + " " + user.lastName)
                 }
+                self.saveGroup(groupList)
+                print(groupList)
+                loadData = true
             case .failure(let error):
                 print(error)
+                loadData = false
             }
         }
     }
@@ -72,9 +80,80 @@ class ManagerData {
                     userPhoto.append(photo)
                     //                print(user.firstName + " " + user.lastName)
                 }
+                self.savePhoto(userPhoto)
+                print(userPhoto)
+                loadData = true
             case .failure(let error):
                 print(error)
+                loadData = false
             }
         }
+    }
+    func saveUser(_ users: [User])  {
+        do {
+            let realm = try! Realm()
+            realm.beginWrite()
+            realm.add(users, update: true)
+            try realm.commitWrite()
+        } catch {
+            print(error)
+        }
+    }
+    func saveGroup(_ groups: [Group])  {
+        do {
+            let realm = try! Realm()
+            print("REALM groups file:\(realm.configuration.fileURL)")
+
+            realm.beginWrite()
+            realm.add(groups, update: true)
+            try realm.commitWrite()
+        } catch {
+            print(error)
+        }
+    }
+    func savePhoto(_ photos: [Photo])  {
+        do {
+            let realm = try! Realm()
+            realm.beginWrite()
+            realm.add(photos, update: true)
+            try realm.commitWrite()
+        } catch {
+            print(error)
+        }
+    }
+    func getUser() -> [User] {
+        let realm = try! Realm()
+        var userList: [User] = []
+        let data = realm.objects(User.self)
+        for value in data {
+            userList.append(value)
+        }
+        return userList
+    }
+    func getGroup() -> [Group] {
+        let realm = try! Realm()
+        var groupList: [Group] = []
+        let data = realm.objects(Group.self)
+        for value in data {
+            groupList.append(value)
+        }
+        return groupList
+    }
+    func getPhoto() -> [Photo] {
+        let realm = try! Realm()
+        var photoList: [Photo] = []
+        let data = realm.objects(Photo.self)
+        for value in data {
+            photoList.append(value)
+        }
+        return photoList
+    }
+}
+var loadData: Bool? {
+    get {
+        return UserDefaults.standard.bool(forKey: "start") as Bool?
+    }
+    set {
+        UserDefaults.standard.set(newValue, forKey: "start")
     }
 }

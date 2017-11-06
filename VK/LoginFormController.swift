@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import WebKit
+import RealmSwift
 
 var access_token: String = ""
 //объявляем дефолтный объект для доступа к хранилищу NSUserDefaults
@@ -110,10 +111,19 @@ extension LoginFormController: WKNavigationDelegate {
         print("Access token:\(access_token)")
         
         let manager = ManagerData()
+        //loadData = false
+        print("Load data: \(loadData)")
+        if loadData != true {
+            print("load from VK")
         manager.loadFriendList()
         manager.loadGroupList()
         manager.loadPhoto()
-        
+        } else {
+            print("load from Realm DB")
+            userList = manager.getUser()
+            groupList = manager.getGroup()
+            userPhoto = manager.getPhoto()
+        }
         //сохраняем в NSUserDefaults информацию о том, что пользователь авторизован
         userDefaults.set(true, forKey: "userIsAutorized")
         
