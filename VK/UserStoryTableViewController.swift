@@ -7,23 +7,30 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
+import RealmSwift
 
 var userList = [User]()
 
 class UserStoryTableViewController: UITableViewController {
 
 //    var friendList: [(String, UIImage?)] = [("Кэтрин Джейнвэй", UIImage(named: "Janeway")),("Чакотай",UIImage(named: "Chakotay")),("Тувок",UIImage(named: "Tuvok"))]
+    let manager = ManagerData()
+    var notificationToken: NotificationToken? = nil
+    
     override func viewDidLoad() {
-        //print ("viewDidLoad")
-
-        //loadFriendList()
-        //print ("viewDidLoad - end")
+ 
         super.viewDidLoad()
         
-        tableView.reloadData()
-
+        //loadFriends = false
+        //print("UserStoryTableViewController.viewDidLoad")
+        
+        if loadFriends != true {
+            print("load Friend list from VK")
+            manager.loadFriendList()
+        }
+        print("update Friend list from Realm DB")
+        updateDataFromDB()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -36,6 +43,27 @@ class UserStoryTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func updateDataFromDB() {
+        let realm = try! Realm()
+        let result = realm.objects(User.self)
+        
+        notificationToken = result.observe() {[weak self] (change: RealmCollectionChange) in
+            switch change {
+            case .initial:
+                print("new")
+                userList = self!.manager.getUser()
+                self?.tableView.reloadData()
+            //case .update(_, let deletions, let insertions, let modifications):
+              case .update(_):
+                print("update")
+                userList = self!.manager.getUser()
+                self?.tableView.reloadData()
+            case .error(let newError):
+                print(newError)
+            }
+        }
+        
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

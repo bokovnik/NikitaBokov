@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 private let reuseIdentifier = "Cell"
 
@@ -14,10 +15,22 @@ var userPhoto = [Photo]()
 
 class FriendPhotoCollectionViewController: UICollectionViewController {
 
+    let manager = ManagerData()
+    var notificationToken: NotificationToken? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.collectionView!.reloadData()
+        //loadPhotos = false
+        
+        if loadPhotos != true {
+            print("load user photos from VK")
+            manager.loadPhoto()
+        }
+        print("update user photos from Realm DB")
+        updateDataFromDB()
+        
+        //self.collectionView!.reloadData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -32,7 +45,27 @@ class FriendPhotoCollectionViewController: UICollectionViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    func updateDataFromDB() {
+        let realm = try! Realm()
+        let result = realm.objects(Photo.self)
+        
+        notificationToken = result.observe() {[weak self] (change: RealmCollectionChange) in
+            switch change {
+            case .initial:
+                print("new")
+                userPhoto = self!.manager.getPhoto()
+                self?.collectionView?.reloadData()
+            //case .update(_, let deletions, let insertions, let modifications):
+            case .update(_):
+                print("update")
+                userPhoto = self!.manager.getPhoto()
+                self?.collectionView?.reloadData()
+            case .error(let newError):
+                print(newError)
+            }
+        }
+        
+    }
     /*
     // MARK: - Navigation
 
@@ -53,7 +86,7 @@ class FriendPhotoCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 1
+        return userPhoto.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

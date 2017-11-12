@@ -32,11 +32,11 @@ class ManagerData {
                 }
                 //print(userList.count)
                 self.saveUser(userList)
-                print(userList)
-                loadData = true
+                //print(userList)
+                loadFriends = true
             case .failure(let error):
                 print(error)
-                loadData = false
+                loadFriends = false
             }
         }
     }
@@ -58,15 +58,15 @@ class ManagerData {
                 }
                 self.saveGroup(groupList)
                 print(groupList)
-                loadData = true
+                loadGroups = true
             case .failure(let error):
                 print(error)
-                loadData = false
+                loadGroups = false
             }
         }
     }
     func loadPhoto(){
-        let urlFriends = "https://api.vk.com/method/photos.get?album_id=profile&user_id=1868775&v=5.52&access_token=\(access_token)"
+        let urlFriends = "https://api.vk.com/method/photos.get?album_id=profile&v=5.52&access_token=\(access_token)"
         
         Alamofire.request(urlFriends, method: .get).responseJSON { response in
             switch response.result {
@@ -82,10 +82,10 @@ class ManagerData {
                 }
                 self.savePhoto(userPhoto)
                 print(userPhoto)
-                loadData = true
+                loadPhotos = true
             case .failure(let error):
                 print(error)
-                loadData = false
+                loadPhotos = false
             }
         }
     }
@@ -149,11 +149,27 @@ class ManagerData {
         return photoList
     }
 }
-var loadData: Bool? {
+var loadFriends: Bool? {
     get {
-        return UserDefaults.standard.bool(forKey: "start") as Bool?
+        return UserDefaults.standard.bool(forKey: "friedsLoaded") as Bool?
     }
     set {
-        UserDefaults.standard.set(newValue, forKey: "start")
+        UserDefaults.standard.set(newValue, forKey: "friedsLoaded")
+    }
+}
+var loadGroups: Bool? {
+    get {
+        return UserDefaults.standard.bool(forKey: "groupsLoaded") as Bool?
+    }
+    set {
+        UserDefaults.standard.set(newValue, forKey: "groupsLoaded")
+    }
+}
+var loadPhotos: Bool? {
+    get {
+        return UserDefaults.standard.bool(forKey: "photosLoaded") as Bool?
+    }
+    set {
+        UserDefaults.standard.set(newValue, forKey: "photosLoaded")
     }
 }

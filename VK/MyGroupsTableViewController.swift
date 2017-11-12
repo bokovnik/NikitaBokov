@@ -7,17 +7,29 @@
 //
 
 import UIKit
+import RealmSwift
 
 var groupList = [Group]()
 
 class MyGroupsTableViewController: UITableViewController {
 
+    let manager = ManagerData()
+    var notificationToken: NotificationToken? = nil
+    
     var MyGroupList: [(String, UIImage?)] = [("Планета Земля", UIImage(named: "Earth")),("Солнечная система",UIImage(named: "SolarSystem")),("Млечный путь",UIImage(named: "MilkyWay"))]
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        tableView.reloadData()
+        //loadGroups = false
+        
+        if loadGroups != true {
+            print("load Group list from VK")
+            manager.loadGroupList()
+        }
+        print("update Group list from Realm DB")
+        updateDataFromDB()
+        //tableView.reloadData()
 
         //let manager = ManagerData()
         //manager.loadGroupList()
@@ -33,7 +45,27 @@ class MyGroupsTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    func updateDataFromDB() {
+        let realm = try! Realm()
+        let result = realm.objects(Group.self)
+        
+        notificationToken = result.observe() {[weak self] (change: RealmCollectionChange) in
+            switch change {
+            case .initial:
+                print("new")
+                groupList = self!.manager.getGroup()
+                self?.tableView.reloadData()
+            //case .update(_, let deletions, let insertions, let modifications):
+            case .update(_):
+                print("update")
+                groupList = self!.manager.getGroup()
+                self?.tableView.reloadData()
+            case .error(let newError):
+                print(newError)
+            }
+        }
+        
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -71,8 +103,8 @@ class MyGroupsTableViewController: UITableViewController {
     override func tableView(  _ tableView:  UITableView, commit editingStyle:  UITableViewCellEditingStyle,  forRowAt indexPath:  IndexPath)  {
         //  если  была  нажата к нопка  удалить
         if  editingStyle  == .  delete {
-            //  мы  удаляем г ород  из  массива
-            MyGroupList.remove( at:  indexPath.row)
+            //  мы  удаляем группу  из  массива
+            groupList.remove( at:  indexPath.row)
             // и  удаляем  строку  из таблицы
             tableView.deleteRows(at:  [indexPath] ,  with:  .fade)
         }
