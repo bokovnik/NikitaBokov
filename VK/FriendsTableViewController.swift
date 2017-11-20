@@ -1,39 +1,36 @@
 //
-//  MyGroupsTableViewController.swift
+//  UserStoryTableViewController.swift
 //  VK_NikitaBokov
 //
-//  Created by Боков Никита on 24.10.2017.
+//  Created by Боков Никита on 19.10.2017.
 //  Copyright © 2017 Боков Никита. All rights reserved.
 //
 
 import UIKit
 import RealmSwift
 
-var groupList = [Group]()
+var userList = [User]()
 
-class MyGroupsTableViewController: UITableViewController {
+class FriendsTableViewController: UITableViewController {
 
+//    var friendList: [(String, UIImage?)] = [("Кэтрин Джейнвэй", UIImage(named: "Janeway")),("Чакотай",UIImage(named: "Chakotay")),("Тувок",UIImage(named: "Tuvok"))]
     let manager = ManagerData()
     var notificationToken: NotificationToken? = nil
     
-    var MyGroupList: [(String, UIImage?)] = [("Планета Земля", UIImage(named: "Earth")),("Солнечная система",UIImage(named: "SolarSystem")),("Млечный путь",UIImage(named: "MilkyWay"))]
     override func viewDidLoad() {
-        
+ 
         super.viewDidLoad()
         
-        loadGroups = false
+        loadFriends = false
+        //print("UserStoryTableViewController.viewDidLoad")
         
-        if loadGroups != true {
-            print("load Group list from VK")
-            manager.loadGroupList()
+        if loadFriends != true {
+            print("load Friend list from VK")
+            manager.loadFriendList()
         }
-        print("update Group list from Realm DB")
+        print("update Friend list from Realm DB")
         updateDataFromDB()
-        //tableView.reloadData()
-
-        //let manager = ManagerData()
-        //manager.loadGroupList()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -45,20 +42,21 @@ class MyGroupsTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     func updateDataFromDB() {
         let realm = try! Realm()
-        let result = realm.objects(Group.self)
+        let result = realm.objects(User.self)
         
         notificationToken = result.observe() {[weak self] (change: RealmCollectionChange) in
             switch change {
             case .initial:
                 print("new")
-                groupList = self!.manager.getGroup()
+                userList = self!.manager.getUser()
                 self?.tableView.reloadData()
             //case .update(_, let deletions, let insertions, let modifications):
-            case .update(_):
+              case .update(_):
                 print("update")
-                groupList = self!.manager.getGroup()
+                userList = self!.manager.getUser()
                 self?.tableView.reloadData()
             case .error(let newError):
                 print(newError)
@@ -70,45 +68,29 @@ class MyGroupsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        //print("Количество секций: 1")
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return groupList.count
+
+        //print("Количество строк:\(userList.count)")
+        return userList.count
     }
 
+   let cellImage = UIImageView()
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myGroups", for: indexPath)
-        cell.textLabel?.text = groupList[indexPath.row].name
-        cell.imageView?.image = UIImage(named: "Earth")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        cell.textLabel?.text = userList[indexPath.row].firstName + " " + userList[indexPath.row].lastName
+        cell.imageView?.image = UIImage(named: "Janeway")
         // Configure the cell...
 
         return cell
     }
- 
-    @IBAction func addGroup(segue: UIStoryboardSegue) {
-        //print("сегвей: \(segue.identifier)")
-        if segue.identifier == "addGroup" {
-            let groupsController = segue.source as! GroupsTableViewController
-            if let indexPath = groupsController.tableView.indexPathForSelectedRow {
-                let group = groupsController.groupList[indexPath.row]
-                MyGroupList.append((group.0, group.1))
-                tableView.reloadData()
-            }
-        }
-    }
+    
 
-    override func tableView(  _ tableView:  UITableView, commit editingStyle:  UITableViewCellEditingStyle,  forRowAt indexPath:  IndexPath)  {
-        //  если  была  нажата к нопка  удалить
-        if  editingStyle  == .  delete {
-            //  мы  удаляем группу  из  массива
-            groupList.remove( at:  indexPath.row)
-            // и  удаляем  строку  из таблицы
-            tableView.deleteRows(at:  [indexPath] ,  with:  .fade)
-        }
-    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -155,3 +137,4 @@ class MyGroupsTableViewController: UITableViewController {
     */
 
 }
+

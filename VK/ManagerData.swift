@@ -40,6 +40,39 @@ class ManagerData {
             }
         }
     }
+    func loadNewsFeed(){
+        let urlNewsFeed = "https://api.vk.com/method/newsfeed.get?&filters=post&count=50&v=5.68&access_token=\(access_token)"
+        
+        Alamofire.request(urlNewsFeed, method: .get).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print(json)
+                for (_, subJSON) in json["response"]["items"] {
+                    let news = News()
+                    news.id = subJSON["post_id"].intValue
+                    //news.author = subJSON["first_name"].stringValue
+                    //news.photoURL = subJSON["last_name"].stringValue
+                    //news.authorPhoto_50 = subJSON["photo_50"].stringValue
+                    news.text = subJSON["text"].stringValue
+                    news.likeCount = subJSON["likes"]["count"].intValue
+                    news.commentCount = subJSON["comments"]["count"].intValue
+                    news.repostCount = subJSON["reposts"]["count"].intValue
+                    news.viewsCount = subJSON["views"]["count"].intValue
+                    newsFeed.append(news)
+                    print("text: \(news.text)")
+                    //print(userList[0].firstName + " " + userList[0].lastName)
+                }
+                //print(userList.count)
+                self.saveNews(newsFeed)
+                //print(userList)
+                loadNews = true
+            case .failure(let error):
+                print(error)
+                loadNews = false
+            }
+        }
+    }
     func loadGroupList(){
         let urlFriends = "https://api.vk.com/method/groups.get?&extended=1&fields=name&v=5.52&access_token=\(access_token)"
         
@@ -57,7 +90,7 @@ class ManagerData {
                     //                print(user.firstName + " " + user.lastName)
                 }
                 self.saveGroup(groupList)
-                print(groupList)
+                //print(groupList)
                 loadGroups = true
             case .failure(let error):
                 print(error)
@@ -99,6 +132,16 @@ class ManagerData {
             print(error)
         }
     }
+    func saveNews(_ news: [News])  {
+        do {
+            let realm = try! Realm()
+            realm.beginWrite()
+            realm.add(news, update: true)
+            try realm.commitWrite()
+        } catch {
+            print(error)
+        }
+    }
     func saveGroup(_ groups: [Group])  {
         do {
             let realm = try! Realm()
@@ -130,6 +173,15 @@ class ManagerData {
         }
         return userList
     }
+    func getNews() -> [News] {
+        let realm = try! Realm()
+        var newsFeed: [News] = []
+        let data = realm.objects(News.self)
+        for value in data {
+            newsFeed.append(value)
+        }
+        return newsFeed
+    }
     func getGroup() -> [Group] {
         let realm = try! Realm()
         var groupList: [Group] = []
@@ -155,6 +207,14 @@ var loadFriends: Bool? {
     }
     set {
         UserDefaults.standard.set(newValue, forKey: "friedsLoaded")
+    }
+}
+var loadNews: Bool? {
+    get {
+        return UserDefaults.standard.bool(forKey: "newsLoaded") as Bool?
+    }
+    set {
+        UserDefaults.standard.set(newValue, forKey: "newsLoaded")
     }
 }
 var loadGroups: Bool? {

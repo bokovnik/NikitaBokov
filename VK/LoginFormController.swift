@@ -34,7 +34,7 @@ class LoginFormController: UIViewController {
             URLQueryItem(name: "client_id", value: "6235615"),
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
-            URLQueryItem(name: "scope", value: "262150"),
+            URLQueryItem(name: "scope", value: "270342"),
             URLQueryItem(name: "response_type", value: "token"),
             URLQueryItem(name: "v", value: "5.68")
         ]
@@ -110,6 +110,8 @@ extension LoginFormController: WKNavigationDelegate {
         
         print("Access token:\(access_token)")
         
+        //let manager = ManagerData()
+        //manager.loadNewsFeed()
         //сохраняем в NSUserDefaults информацию о том, что пользователь авторизован
         userDefaults.set(true, forKey: "userIsAutorized")
         

@@ -1,36 +1,32 @@
 //
-//  UserStoryTableViewController.swift
+//  NewsFeedTableViewController.swift
 //  VK_NikitaBokov
 //
-//  Created by Боков Никита on 19.10.2017.
+//  Created by Боков Никита on 20.11.2017.
 //  Copyright © 2017 Боков Никита. All rights reserved.
 //
 
 import UIKit
 import RealmSwift
 
-var userList = [User]()
+var newsFeed = [News]()
 
-class UserStoryTableViewController: UITableViewController {
+class NewsFeedTableViewController: UITableViewController {
 
-//    var friendList: [(String, UIImage?)] = [("Кэтрин Джейнвэй", UIImage(named: "Janeway")),("Чакотай",UIImage(named: "Chakotay")),("Тувок",UIImage(named: "Tuvok"))]
     let manager = ManagerData()
     var notificationToken: NotificationToken? = nil
     
     override func viewDidLoad() {
- 
         super.viewDidLoad()
-        
-        //loadFriends = false
+        loadNews = false
         //print("UserStoryTableViewController.viewDidLoad")
         
-        if loadFriends != true {
-            print("load Friend list from VK")
-            manager.loadFriendList()
+        if loadNews != true {
+            print("load News from VK")
+            manager.loadNewsFeed()
         }
-        print("update Friend list from Realm DB")
+        print("update News from Realm DB")
         updateDataFromDB()
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -42,21 +38,20 @@ class UserStoryTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
     func updateDataFromDB() {
         let realm = try! Realm()
-        let result = realm.objects(User.self)
+        let result = realm.objects(News.self)
         
         notificationToken = result.observe() {[weak self] (change: RealmCollectionChange) in
             switch change {
             case .initial:
                 print("new")
-                userList = self!.manager.getUser()
+                newsFeed = self!.manager.getNews()
                 self?.tableView.reloadData()
             //case .update(_, let deletions, let insertions, let modifications):
-              case .update(_):
+            case .update(_):
                 print("update")
-                userList = self!.manager.getUser()
+                newsFeed = self!.manager.getNews()
                 self?.tableView.reloadData()
             case .error(let newError):
                 print(newError)
@@ -68,23 +63,27 @@ class UserStoryTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        //print("Количество секций: 1")
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        print("newsFeedCount:\(newsFeed.count)")
 
-        //print("Количество строк:\(userList.count)")
-        return userList.count
+        return newsFeed.count
     }
 
-   let cellImage = UIImageView()
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        cell.textLabel?.text = userList[indexPath.row].firstName + " " + userList[indexPath.row].lastName
-        cell.imageView?.image = UIImage(named: "Janeway")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewCell", for: indexPath) as! NewCell
+        
+        //cell.author.text = newsFeed[indexPath.row].text
+        cell.textOf.text = newsFeed[indexPath.row].text
+        cell.likeCount.text = String(newsFeed[indexPath.row].likeCount)
+        cell.commentCount.text = String(newsFeed[indexPath.row].commentCount)
+        cell.repostCount.text = String(newsFeed[indexPath.row].repostCount)
+        cell.viewCount.text = String(newsFeed[indexPath.row].viewsCount)
+
         // Configure the cell...
 
         return cell
@@ -137,4 +136,3 @@ class UserStoryTableViewController: UITableViewController {
     */
 
 }
-

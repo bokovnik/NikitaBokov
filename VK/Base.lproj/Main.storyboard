@@ -56,6 +56,7 @@
                     <connections>
                         <segue destination="43S-8I-P2b" kind="relationship" relationship="viewControllers" id="0lA-93-9Yr"/>
                         <segue destination="RYA-UB-yHA" kind="relationship" relationship="viewControllers" id="e5L-bh-rS7"/>
+                        <segue destination="Rkw-bl-Sc5" kind="relationship" relationship="viewControllers" id="4gT-v0-jcK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TeW-kM-b9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -65,7 +66,7 @@
         <!--Друзья-->
         <scene sceneID="IXM-uN-Yfo">
             <objects>
-                <tableViewController id="AdF-Ao-jFG" customClass="UserStoryTableViewController" customModule="VK_NikitaBokov" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="AdF-Ao-jFG" customClass="FriendsTableViewController" customModule="VK_NikitaBokov" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="crC-qp-1kw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,6 +94,131 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gme-8H-sjo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1444.9275362318842" y="-215.21739130434784"/>
+        </scene>
+        <!--Новости-->
+        <scene sceneID="cTS-Qx-SXC">
+            <objects>
+                <tableViewController id="ehe-in-U4O" customClass="NewsFeedTableViewController" customModule="VK_NikitaBokov" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2JA-sz-VVP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCell" rowHeight="452" id="oT9-HL-UeB" customClass="NewCell" customModule="VK_NikitaBokov" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="452"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oT9-HL-UeB" id="5ul-Ti-lxB">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="451.66666666666669"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="author" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPD-NC-ZY9" userLabel="author">
+                                            <rect key="frame" x="74" y="0.0" width="291" height="57"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Chakotay" translatesAutoresizingMaskIntoConstraints="NO" id="Zc0-wH-nMc" userLabel="authorPhoto">
+                                            <rect key="frame" x="0.0" y="0.0" width="56" height="57"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Текст новости" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIq-fK-kke" userLabel="text">
+                                            <rect key="frame" x="147.66666666666666" y="215.66666666666666" width="118.66666666666666" height="20.333333333333343"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoa-1O-0lm">
+                                            <rect key="frame" x="1" y="425.66666666666669" width="412" height="25"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="25" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="1j9-KR-Eyr">
+                                                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="Lqk-L0-Iex"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPl-94-qqo" userLabel="LikeCount">
+                                                    <rect key="frame" x="25" y="0.0" width="281" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" image="comment" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Om-19-O30" userLabel="comment">
+                                                    <rect key="frame" x="306" y="0.0" width="25" height="25"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4c-6v-kPk" userLabel="CommentCount">
+                                                    <rect key="frame" x="331" y="0.0" width="10.333333333333314" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" ambiguous="YES" image="repost" translatesAutoresizingMaskIntoConstraints="NO" id="nqb-Ky-1ca">
+                                                    <rect key="frame" x="341.33333333333331" y="0.0" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="hVT-1U-bwA"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09E-8I-uH6" userLabel="RepostCount">
+                                                    <rect key="frame" x="366.33333333333331" y="0.0" width="10.333333333333314" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" ambiguous="YES" image="eye" translatesAutoresizingMaskIntoConstraints="NO" id="EVK-AI-Rzd">
+                                                    <rect key="frame" x="376.66666666666669" y="0.0" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="gRu-N1-LH4"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="im2-nU-B1x" userLabel="ViewCount">
+                                                    <rect key="frame" x="401.66666666666669" y="0.0" width="10.333333333333314" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="im2-nU-B1x" firstAttribute="centerY" secondItem="aoa-1O-0lm" secondAttribute="centerY" id="DZp-ZX-PNv"/>
+                                                <constraint firstItem="DPl-94-qqo" firstAttribute="centerY" secondItem="aoa-1O-0lm" secondAttribute="centerY" id="RkZ-US-0jT"/>
+                                                <constraint firstItem="09E-8I-uH6" firstAttribute="centerY" secondItem="aoa-1O-0lm" secondAttribute="centerY" id="S2o-NF-Kgx"/>
+                                                <constraint firstItem="EVK-AI-Rzd" firstAttribute="centerY" secondItem="aoa-1O-0lm" secondAttribute="centerY" id="bDg-W3-UfB"/>
+                                                <constraint firstItem="1Om-19-O30" firstAttribute="centerY" secondItem="aoa-1O-0lm" secondAttribute="centerY" id="dzJ-YS-iKL"/>
+                                                <constraint firstItem="h4c-6v-kPk" firstAttribute="centerY" secondItem="aoa-1O-0lm" secondAttribute="centerY" id="ghg-6g-N44"/>
+                                                <constraint firstItem="1j9-KR-Eyr" firstAttribute="centerY" secondItem="aoa-1O-0lm" secondAttribute="centerY" id="kNW-U1-bNb"/>
+                                                <constraint firstItem="1j9-KR-Eyr" firstAttribute="leading" secondItem="aoa-1O-0lm" secondAttribute="leading" id="rkn-pz-YAY"/>
+                                                <constraint firstItem="1j9-KR-Eyr" firstAttribute="centerY" secondItem="aoa-1O-0lm" secondAttribute="centerY" id="ujS-6M-YRv"/>
+                                                <constraint firstItem="nqb-Ky-1ca" firstAttribute="centerY" secondItem="aoa-1O-0lm" secondAttribute="centerY" id="z7X-PA-QE9"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="aoa-1O-0lm" secondAttribute="bottom" constant="1" id="9nx-zF-dAI"/>
+                                        <constraint firstItem="RIq-fK-kke" firstAttribute="centerX" secondItem="5ul-Ti-lxB" secondAttribute="centerX" id="Lbk-pL-40n"/>
+                                        <constraint firstItem="aoa-1O-0lm" firstAttribute="centerX" secondItem="5ul-Ti-lxB" secondAttribute="centerX" id="MUZ-WE-j3S"/>
+                                        <constraint firstItem="aoa-1O-0lm" firstAttribute="leading" secondItem="5ul-Ti-lxB" secondAttribute="leading" constant="1" id="fss-Sa-CJa"/>
+                                        <constraint firstItem="RIq-fK-kke" firstAttribute="centerY" secondItem="5ul-Ti-lxB" secondAttribute="centerY" id="lyg-fT-wLl"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="author" destination="NPD-NC-ZY9" id="3ne-VF-l7O"/>
+                                    <outlet property="commentCount" destination="h4c-6v-kPk" id="yLD-gF-g9k"/>
+                                    <outlet property="likeCount" destination="DPl-94-qqo" id="CnG-5B-I4j"/>
+                                    <outlet property="repostCount" destination="09E-8I-uH6" id="jHz-OL-bcm"/>
+                                    <outlet property="textOf" destination="RIq-fK-kke" id="1jh-Zv-Bh5"/>
+                                    <outlet property="viewCount" destination="im2-nU-B1x" id="XyL-Ve-cM6"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ehe-in-U4O" id="HSt-w1-QYo"/>
+                            <outlet property="delegate" destination="ehe-in-U4O" id="WGC-fU-2L8"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Новости" id="nij-Rg-lgV"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ylL-LZ-0CC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1444.9275362318842" y="-951.35869565217399"/>
         </scene>
         <!--Друзья-->
         <scene sceneID="0SR-Co-SRV">
@@ -250,5 +376,31 @@
             </objects>
             <point key="canvasLocation" x="566" y="555"/>
         </scene>
+        <!--Новости-->
+        <scene sceneID="L5w-gT-j4u">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rkw-bl-Sc5" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Новости" id="ISt-BE-NVZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IgW-W8-rhE">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ehe-in-U4O" kind="relationship" relationship="rootViewController" id="dUJ-xN-T4c"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G9F-qc-CUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="565" y="-951"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Chakotay" width="330" height="346"/>
+        <image name="comment" width="25" height="25"/>
+        <image name="eye" width="25" height="25"/>
+        <image name="heart" width="25" height="25"/>
+        <image name="repost" width="25" height="25"/>
+    </resources>
 </document>
