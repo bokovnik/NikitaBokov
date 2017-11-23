@@ -12,10 +12,13 @@ import SwiftyJSON
 import RealmSwift
 
 class ManagerData {
+    
+    let concurrentQueue = DispatchQueue(label: "concurrent_queue", attributes: .concurrent)
+    
     func loadFriendList(){
         let urlFriends = "https://api.vk.com/method/friends.get?&fields=nickname&v=5.52&access_token=\(access_token)"
     
-        Alamofire.request(urlFriends, method: .get).responseJSON { response in
+        Alamofire.request(urlFriends, method: .get).responseJSON(queue: concurrentQueue) { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -41,9 +44,9 @@ class ManagerData {
         }
     }
     func loadNewsFeed(){
-        let urlNewsFeed = "https://api.vk.com/method/newsfeed.get?&filters=post&count=50&v=5.68&access_token=\(access_token)"
+        let urlNewsFeed = "https://api.vk.com/method/newsfeed.get?&filters=post&count=10&v=5.68&access_token=\(access_token)"
         
-        Alamofire.request(urlNewsFeed, method: .get).responseJSON { response in
+        Alamofire.request(urlNewsFeed, method: .get).responseJSON(queue: concurrentQueue) { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -60,8 +63,7 @@ class ManagerData {
                     news.repostCount = subJSON["reposts"]["count"].intValue
                     news.viewsCount = subJSON["views"]["count"].intValue
                     newsFeed.append(news)
-                    print("text: \(news.text)")
-                    //print(userList[0].firstName + " " + userList[0].lastName)
+                    //print("text: \(news.text)")
                 }
                 //print(userList.count)
                 self.saveNews(newsFeed)
@@ -76,7 +78,7 @@ class ManagerData {
     func loadGroupList(){
         let urlFriends = "https://api.vk.com/method/groups.get?&extended=1&fields=name&v=5.52&access_token=\(access_token)"
         
-        Alamofire.request(urlFriends, method: .get).responseJSON { response in
+        Alamofire.request(urlFriends, method: .get).responseJSON(queue: concurrentQueue) { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -87,7 +89,6 @@ class ManagerData {
                     group.name = subJSON["name"].stringValue
                     group.photo_50 = subJSON["photo_50"].stringValue
                     groupList.append(group)
-                    //                print(user.firstName + " " + user.lastName)
                 }
                 self.saveGroup(groupList)
                 //print(groupList)
@@ -101,7 +102,7 @@ class ManagerData {
     func loadPhoto(){
         let urlFriends = "https://api.vk.com/method/photos.get?album_id=profile&v=5.52&access_token=\(access_token)"
         
-        Alamofire.request(urlFriends, method: .get).responseJSON { response in
+        Alamofire.request(urlFriends, method: .get).responseJSON(queue: concurrentQueue) { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -111,7 +112,6 @@ class ManagerData {
                     photo.id = subJSON["id"].intValue
                     photo.photoURL = "" // пока неясно, что сюда идет
                     userPhoto.append(photo)
-                    //                print(user.firstName + " " + user.lastName)
                 }
                 self.savePhoto(userPhoto)
                 print(userPhoto)
