@@ -21,7 +21,7 @@ class FriendsTableViewController: UITableViewController {
  
         super.viewDidLoad()
         
-        loadFriends = false
+        //loadFriends = false
         //print("UserStoryTableViewController.viewDidLoad")
         
         if loadFriends != true {

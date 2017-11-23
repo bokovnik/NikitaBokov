@@ -21,7 +21,7 @@ class MyGroupsTableViewController: UITableViewController {
         
         super.viewDidLoad()
         
-        loadGroups = false
+        //loadGroups = false
         
         if loadGroups != true {
             print("load Group list from VK")

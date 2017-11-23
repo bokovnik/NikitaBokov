@@ -18,7 +18,7 @@ class NewsFeedTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadNews = false
+        //loadNews = false
         //print("UserStoryTableViewController.viewDidLoad")
         
         if loadNews != true {
