@@ -21,7 +21,7 @@ class FriendsTableViewController: UITableViewController {
  
         super.viewDidLoad()
         
-        //loadFriends = false
+        loadFriends = false
         //print("UserStoryTableViewController.viewDidLoad")
         
         if loadFriends != true {
@@ -79,17 +79,30 @@ class FriendsTableViewController: UITableViewController {
         return userList.count
     }
 
-   let cellImage = UIImageView()
+   //let cellImage = UIImageView()
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         cell.textLabel?.text = userList[indexPath.row].firstName + " " + userList[indexPath.row].lastName
-        cell.imageView?.image = UIImage(named: "Janeway")
-        // Configure the cell...
+        let queue = OperationQueue()
+        //print("friendPhoto: \(userList[indexPath.row].photo_50)")
+        let load1 = LoadImage(url: userList[indexPath.row].photo_50)
+        queue.addOperation(load1)
 
+        load1.completionBlock = {
+            OperationQueue.main.addOperation() {
+        cell.imageView?.image = load1.image //UIImage(named: "Janeway")
+
+        // Configure the cell...
+            }
+        }
         return cell
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        manager.loadFriendList()
+        updateDataFromDB()
+        self.tableView.reloadData()
+    }
 
     /*
     // Override to support conditional editing of the table view.

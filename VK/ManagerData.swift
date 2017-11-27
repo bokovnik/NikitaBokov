@@ -16,9 +16,9 @@ class ManagerData {
     let concurrentQueue = DispatchQueue(label: "concurrent_queue", attributes: .concurrent)
     
     func loadFriendList(){
-        let urlFriends = "https://api.vk.com/method/friends.get?&fields=nickname&v=5.52&access_token=\(access_token)"
+        let urlFriends = "https://api.vk.com/method/friends.get?&fields=nickname,photo_50&v=5.52&access_token=\(access_token)"
     
-        Alamofire.request(urlFriends, method: .get).responseJSON(queue: concurrentQueue) { response in
+        Alamofire.request(urlFriends, method: .get).responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -46,7 +46,7 @@ class ManagerData {
     func loadNewsFeed(){
         let urlNewsFeed = "https://api.vk.com/method/newsfeed.get?&filters=post&count=10&v=5.68&access_token=\(access_token)"
         
-        Alamofire.request(urlNewsFeed, method: .get).responseJSON(queue: concurrentQueue) { response in
+        Alamofire.request(urlNewsFeed, method: .get).responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -78,7 +78,7 @@ class ManagerData {
     func loadGroupList(){
         let urlFriends = "https://api.vk.com/method/groups.get?&extended=1&fields=name&v=5.52&access_token=\(access_token)"
         
-        Alamofire.request(urlFriends, method: .get).responseJSON(queue: concurrentQueue) { response in
+        Alamofire.request(urlFriends, method: .get).responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
@@ -102,7 +102,7 @@ class ManagerData {
     func loadPhoto(){
         let urlFriends = "https://api.vk.com/method/photos.get?album_id=profile&v=5.52&access_token=\(access_token)"
         
-        Alamofire.request(urlFriends, method: .get).responseJSON(queue: concurrentQueue) { response in
+        Alamofire.request(urlFriends, method: .get).responseJSON { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)

@@ -35,6 +35,8 @@
 		9CE139991FA7A99C001F39BD /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE139981FA7A99C001F39BD /* Photo.swift */; };
 		9CE1399B1FA7A9D2001F39BD /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1399A1FA7A9D2001F39BD /* Group.swift */; };
 		9CE1399D1FA7B2C3001F39BD /* ManagerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE1399C1FA7B2C3001F39BD /* ManagerData.swift */; };
+		9CE706391FCC74270088C31A /* LoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE706381FCC74270088C31A /* LoadImage.swift */; };
+		9CE7063B1FCC914D0088C31A /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE7063A1FCC914D0088C31A /* AsyncOperation.swift */; };
 		9CF4CF941F952475002E5EE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF4CF931F952475002E5EE8 /* AppDelegate.swift */; };
 		9CF4CF991F952475002E5EE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF4CF971F952475002E5EE8 /* Main.storyboard */; };
 		9CF4CF9B1F952475002E5EE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CF4CF9A1F952475002E5EE8 /* Assets.xcassets */; };
@@ -77,6 +79,8 @@
 		9CE139981FA7A99C001F39BD /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		9CE1399A1FA7A9D2001F39BD /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		9CE1399C1FA7B2C3001F39BD /* ManagerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerData.swift; sourceTree = "<group>"; };
+		9CE706381FCC74270088C31A /* LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImage.swift; sourceTree = "<group>"; };
+		9CE7063A1FCC914D0088C31A /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		9CF4CF901F952475002E5EE8 /* VK_NikitaBokov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VK_NikitaBokov.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CF4CF931F952475002E5EE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CF4CF981F952475002E5EE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 				9CF4CF9F1F952475002E5EE8 /* Info.plist */,
 				9CE1399C1FA7B2C3001F39BD /* ManagerData.swift */,
 				9C1542781FC386DA004E3FEF /* NewCell.swift */,
+				9CE706381FCC74270088C31A /* LoadImage.swift */,
+				9CE7063A1FCC914D0088C31A /* AsyncOperation.swift */,
 			);
 			path = VK;
 			sourceTree = "<group>";
@@ -494,11 +500,13 @@
 				9C1542651FC34163004E3FEF /* NewsFeedTableViewController.swift in Sources */,
 				9C0802D11F9EF289005B6431 /* FriendPhotoCollectionViewController.swift in Sources */,
 				9C0802D31F9F14B9005B6431 /* MyGroupsTableViewController.swift in Sources */,
+				9CE706391FCC74270088C31A /* LoadImage.swift in Sources */,
 				9C1542751FC34A85004E3FEF /* News.swift in Sources */,
 				9CE1399D1FA7B2C3001F39BD /* ManagerData.swift in Sources */,
 				9C20B2991F993C2F0051585D /* FriendsTableViewController.swift in Sources */,
 				9CF4CFC41F95288F002E5EE8 /* LoginFormController.swift in Sources */,
 				9C0802D51F9F19E5005B6431 /* GroupsTableViewController.swift in Sources */,
+				9CE7063B1FCC914D0088C31A /* AsyncOperation.swift in Sources */,
 				9CE139971FA7A94B001F39BD /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
