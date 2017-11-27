@@ -62,3 +62,65 @@ class AsyncOperation : Operation {
     
 }
 
+class GetDataOperation: AsyncOperation {
+    
+    override func cancel() {
+        request.cancel()
+        super.cancel()
+    }
+    
+    private var request: DataRequest
+    var data: Data?
+    
+    override func main() {
+        request.responseData(queue: DispatchQueue.global()) { [weak self] response in
+            self?.data = response.data
+            self?.state = .finished
+        }
+    }
+    
+    init(request: DataRequest) {
+        self.request = request
+    }
+    
+}
+
+class ParseFriendsData: Operation {
+    
+    var userList: [User] = []
+    
+    override func main() {
+        guard let getDataOperation = dependencies.first as? GetDataOperation,
+            let data = getDataOperation.data else { return }
+        let json = JSON(data)
+        
+        for (_, subJSON) in json["response"]["items"] {
+            let user = User()
+            user.id = subJSON["id"].intValue
+            user.firstName = subJSON["first_name"].stringValue
+            user.lastName = subJSON["last_name"].stringValue
+            user.photo_50 = subJSON["photo_50"].stringValue
+            userList.append(user)
+            //print(user.firstName + " " + user.lastName)
+            //print(userList[0].firstName + " " + userList[0].lastName)
+        }
+        //print(userList.count)
+        //let md = ManagerData()
+        //md.saveUser(userList)
+        }        
+    }
+
+
+class ReloadFriendsTableController: Operation {
+    var controller: FriendsTableViewController
+    
+    init(controller: FriendsTableViewController) {
+        self.controller = controller
+    }
+    
+    override func main() {
+        guard let parseData = dependencies.first as? ParseFriendsData else { return }
+        controller.userList = parseData.userList
+        controller.tableView.reloadData()
+    }
+}

@@ -13,9 +13,9 @@ import RealmSwift
 
 class ManagerData {
     
-    let concurrentQueue = DispatchQueue(label: "concurrent_queue", attributes: .concurrent)
+    //let concurrentQueue = DispatchQueue(label: "concurrent_queue", attributes: .concurrent)
     
-    func loadFriendList(){
+    /*func loadFriendList(){
         let urlFriends = "https://api.vk.com/method/friends.get?&fields=nickname,photo_50&v=5.52&access_token=\(access_token)"
     
         Alamofire.request(urlFriends, method: .get).responseJSON { response in
@@ -42,7 +42,7 @@ class ManagerData {
                 loadFriends = false
             }
         }
-    }
+    }*/
     func loadNewsFeed(){
         let urlNewsFeed = "https://api.vk.com/method/newsfeed.get?&filters=post&count=10&v=5.68&access_token=\(access_token)"
         

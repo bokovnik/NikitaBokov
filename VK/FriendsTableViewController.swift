@@ -8,28 +8,44 @@
 
 import UIKit
 import RealmSwift
+import Alamofire
 
-var userList = [User]()
 
 class FriendsTableViewController: UITableViewController {
 
 //    var friendList: [(String, UIImage?)] = [("Кэтрин Джейнвэй", UIImage(named: "Janeway")),("Чакотай",UIImage(named: "Chakotay")),("Тувок",UIImage(named: "Tuvok"))]
+    
+    var userList = [User]()
     let manager = ManagerData()
     var notificationToken: NotificationToken? = nil
+    let opq = OperationQueue()
+    let getDataRequest = Alamofire.request("https://api.vk.com/method/friends.get?&fields=nickname,photo_50&v=5.52&access_token=\(access_token)")
     
     override func viewDidLoad() {
  
         super.viewDidLoad()
         
-        loadFriends = false
+        //loadFriends = false
         //print("UserStoryTableViewController.viewDidLoad")
         
-        if loadFriends != true {
+        let getDataOperation = GetDataOperation(request: getDataRequest)
+
+        opq.addOperation(getDataOperation)
+        
+        let parseData = ParseFriendsData()
+        parseData.addDependency(getDataOperation)
+        opq.addOperation(parseData)
+        
+        let reloadTableController = ReloadFriendsTableController(controller: self)
+        reloadTableController.addDependency(parseData)
+        OperationQueue.main.addOperation(reloadTableController)
+        
+        /*if loadFriends != true {
             print("load Friend list from VK")
             manager.loadFriendList()
-        }
-        print("update Friend list from Realm DB")
-        updateDataFromDB()
+        }*/
+//        print("update Friend list from Realm DB")
+//        updateDataFromDB()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -51,12 +67,12 @@ class FriendsTableViewController: UITableViewController {
             switch change {
             case .initial:
                 print("new")
-                userList = self!.manager.getUser()
+                self!.userList = self!.manager.getUser()
                 self?.tableView.reloadData()
             //case .update(_, let deletions, let insertions, let modifications):
               case .update(_):
                 print("update")
-                userList = self!.manager.getUser()
+                self!.userList = self!.manager.getUser()
                 self?.tableView.reloadData()
             case .error(let newError):
                 print(newError)
@@ -99,9 +115,17 @@ class FriendsTableViewController: UITableViewController {
         return cell
     }
     override func viewWillAppear(_ animated: Bool) {
-        manager.loadFriendList()
-        updateDataFromDB()
-        self.tableView.reloadData()
+        let getDataOperation = GetDataOperation(request: getDataRequest)
+        
+        opq.addOperation(getDataOperation)
+        
+        let parseData = ParseFriendsData()
+        parseData.addDependency(getDataOperation)
+        opq.addOperation(parseData)
+        
+        let reloadTableController = ReloadFriendsTableController(controller: self)
+        reloadTableController.addDependency(parseData)
+        OperationQueue.main.addOperation(reloadTableController)
     }
 
     /*

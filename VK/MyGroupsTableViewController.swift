@@ -21,7 +21,7 @@ class MyGroupsTableViewController: UITableViewController {
         
         super.viewDidLoad()
         
-        loadGroups = false
+        //loadGroups = false
         
         if loadGroups != true {
             print("load Group list from VK")
@@ -82,12 +82,28 @@ class MyGroupsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myGroups", for: indexPath)
         cell.textLabel?.text = groupList[indexPath.row].name
-        cell.imageView?.image = UIImage(named: "Earth")
+        
+        let queue = OperationQueue()
+        let load1 = LoadImage(url: groupList[indexPath.row].photo_50)
+        queue.addOperation(load1)
+        
+        load1.completionBlock = {
+            OperationQueue.main.addOperation() {
+        cell.imageView?.image = load1.image//UIImage(named: "Earth")
+                
         // Configure the cell...
-
+            }
+        }
         return cell
     }
  
+    override func viewWillAppear(_ animated: Bool) {
+        manager.loadGroupList()
+        updateDataFromDB()
+        self.tableView.reloadData()
+    }
+
+    
     @IBAction func addGroup(segue: UIStoryboardSegue) {
         //print("сегвей: \(segue.identifier)")
         if segue.identifier == "addGroup" {

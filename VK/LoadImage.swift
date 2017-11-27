@@ -16,7 +16,7 @@ class LoadImage: Operation {
     let url1: URL?
     
     override func main() {
-        print("1. start \(Thread.current)")
+        //print("1. start \(Thread.current)")
         guard url1 != nil else {return}
         do {
             imageData = try  Data(contentsOf: url1!)
