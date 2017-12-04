@@ -99,17 +99,17 @@
         <scene sceneID="cTS-Qx-SXC">
             <objects>
                 <tableViewController id="ehe-in-U4O" customClass="NewsFeedTableViewController" customModule="VK_NikitaBokov" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2JA-sz-VVP">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="500" sectionHeaderHeight="28" sectionFooterHeight="28" id="2JA-sz-VVP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCell" rowHeight="452" id="oT9-HL-UeB" customClass="NewCell" customModule="VK_NikitaBokov" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="452"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCell" rowHeight="-1" id="oT9-HL-UeB" customClass="NewCell" customModule="VK_NikitaBokov" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="500"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oT9-HL-UeB" id="5ul-Ti-lxB">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="451.66666666666669"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="499.66666666666669"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="author" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPD-NC-ZY9" userLabel="author">
                                             <rect key="frame" x="74" y="0.0" width="291" height="57"/>
@@ -119,17 +119,20 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Chakotay" translatesAutoresizingMaskIntoConstraints="NO" id="Zc0-wH-nMc" userLabel="authorPhoto">
-                                            <rect key="frame" x="0.0" y="0.0" width="56" height="57"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <rect key="frame" x="10" y="0.5" width="48" height="53"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Текст новости" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIq-fK-kke" userLabel="text">
-                                            <rect key="frame" x="147.66666666666666" y="215.66666666666666" width="118.66666666666666" height="20.333333333333343"/>
+                                            <rect key="frame" x="147.66666666666666" y="239.66666666666666" width="118.66666666666666" height="20.333333333333343"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" staticText="YES" adjustable="YES"/>
+                                            </accessibility>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoa-1O-0lm">
-                                            <rect key="frame" x="1" y="425.66666666666669" width="412" height="25"/>
+                                            <rect key="frame" x="1" y="473.66666666666669" width="412" height="25"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="25" verticalHuggingPriority="251" image="heart" translatesAutoresizingMaskIntoConstraints="NO" id="1j9-KR-Eyr">
                                                     <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
@@ -137,40 +140,40 @@
                                                         <constraint firstAttribute="width" constant="25" id="Lqk-L0-Iex"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPl-94-qqo" userLabel="LikeCount">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPl-94-qqo" userLabel="LikeCount">
                                                     <rect key="frame" x="25" y="0.0" width="281" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" image="comment" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Om-19-O30" userLabel="comment">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="comment" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Om-19-O30" userLabel="comment">
                                                     <rect key="frame" x="306" y="0.0" width="25" height="25"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4c-6v-kPk" userLabel="CommentCount">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4c-6v-kPk" userLabel="CommentCount">
                                                     <rect key="frame" x="331" y="0.0" width="10.333333333333314" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" ambiguous="YES" image="repost" translatesAutoresizingMaskIntoConstraints="NO" id="nqb-Ky-1ca">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" image="repost" translatesAutoresizingMaskIntoConstraints="NO" id="nqb-Ky-1ca">
                                                     <rect key="frame" x="341.33333333333331" y="0.0" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="hVT-1U-bwA"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09E-8I-uH6" userLabel="RepostCount">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09E-8I-uH6" userLabel="RepostCount">
                                                     <rect key="frame" x="366.33333333333331" y="0.0" width="10.333333333333314" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" ambiguous="YES" image="eye" translatesAutoresizingMaskIntoConstraints="NO" id="EVK-AI-Rzd">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" image="eye" translatesAutoresizingMaskIntoConstraints="NO" id="EVK-AI-Rzd">
                                                     <rect key="frame" x="376.66666666666669" y="0.0" width="25" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="25" id="gRu-N1-LH4"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="im2-nU-B1x" userLabel="ViewCount">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="im2-nU-B1x" userLabel="ViewCount">
                                                     <rect key="frame" x="401.66666666666669" y="0.0" width="10.333333333333314" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -201,6 +204,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="author" destination="NPD-NC-ZY9" id="3ne-VF-l7O"/>
+                                    <outlet property="authorPhoto" destination="Zc0-wH-nMc" id="JMs-w7-M7X"/>
                                     <outlet property="commentCount" destination="h4c-6v-kPk" id="yLD-gF-g9k"/>
                                     <outlet property="likeCount" destination="DPl-94-qqo" id="CnG-5B-I4j"/>
                                     <outlet property="repostCount" destination="09E-8I-uH6" id="jHz-OL-bcm"/>
@@ -215,6 +219,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Новости" id="nij-Rg-lgV"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ylL-LZ-0CC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

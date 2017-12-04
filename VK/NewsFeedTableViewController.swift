@@ -77,13 +77,14 @@ class NewsFeedTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewCell", for: indexPath) as! NewCell
         
-        //cell.author.text = newsFeed[indexPath.row].text
-        cell.textOf.text = newsFeed[indexPath.row].text
+        cell.setAuthorPhoto()
+        cell.setAuthor(text: "author")
+        cell.setTextOf(text: newsFeed[indexPath.row].text)
         cell.likeCount.text = String(newsFeed[indexPath.row].likeCount)
         cell.commentCount.text = String(newsFeed[indexPath.row].commentCount)
         cell.repostCount.text = String(newsFeed[indexPath.row].repostCount)
         cell.viewCount.text = String(newsFeed[indexPath.row].viewsCount)
-
+        tableView.rowHeight = 100 + cell.textOf.frame.height
         // Configure the cell...
 
         return cell
